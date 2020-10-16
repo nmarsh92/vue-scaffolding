@@ -1,12 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <ViewNavBar></ViewNavBar>
+    <b-container>
+      <router-view />
+    </b-container>
+
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view />
+    <router-view /> -->
   </div>
 </template>
+<script>
+import ViewNavBar from "@/components/ViewNavBar.vue";
+
+export default {
+  name: "App",
+  components: {
+    ViewNavBar
+  }
+};
+</script>
 
 <style lang="less">
 #app {
