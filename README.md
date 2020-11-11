@@ -1,5 +1,9 @@
 # project-vue
 
+## Description
+
+    Project intended to serve as a boiler plate starting point for a SPA. It will have implemented router with login redirect, notification framework, and profile page ready to hook into an API.
+
 ## Project setup
 
 ```
