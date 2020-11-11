@@ -1,12 +1,11 @@
 import userService from "../../api/userService";
-
 const state = () => ({
   user: {
-    isAuthenticated: false,
     firstName: null,
     lastName: null,
     email: null,
-  },
+    isAuthenticated: false
+  }
 });
 
 const getters = {
@@ -14,8 +13,8 @@ const getters = {
     return state.user;
   },
   isAuthenticated: (state) => {
-    return state.user.isAuthenticated;
-  },
+    return state.user && state.user.isAuthenticated;
+  }
 };
 
 const actions = {
@@ -33,6 +32,19 @@ const actions = {
       );
     });
   },
+  setUserFromToken({ commit }, token) {
+    return new Promise((resolve, reject) => {
+      userService.getUserFromToken({ token }).then(
+        (user) => {
+          commit("setUser", { user: user });
+          resolve();
+        },
+        function(response) {
+          reject(response);
+        }
+      );
+    });
+  }
 };
 
 const mutations = {
@@ -41,7 +53,7 @@ const mutations = {
     state.user.lastName = user.lastName;
     state.user.email = user.email;
     state.user.isAuthenticated = true;
-  },
+  }
 };
 
 export default {
@@ -49,5 +61,5 @@ export default {
   state,
   getters,
   actions,
-  mutations,
+  mutations
 };

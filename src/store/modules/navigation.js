@@ -7,7 +7,16 @@ const state = () => ({
       to: "/",
       active: true,
       right: false,
-      isTabVisible: true,
+      isTabVisible: true
+    },
+    {
+      id: "profile",
+      title: "Profile",
+      Name: "Profile",
+      to: "/profile",
+      active: true,
+      right: false,
+      isTabVisible: true
     },
     {
       id: "logout",
@@ -15,7 +24,7 @@ const state = () => ({
       to: "logout",
       active: false,
       right: true,
-      isTabVisible: false,
+      isTabVisible: false
     },
     {
       id: "login",
@@ -23,9 +32,9 @@ const state = () => ({
       to: "login",
       active: false,
       right: false,
-      isTabVisible: false,
-    },
-  ],
+      isTabVisible: false
+    }
+  ]
 });
 
 const getters = {
@@ -38,7 +47,7 @@ const getters = {
     return state.pages.filter(function(page) {
       return page.right && page.isTabVisible;
     });
-  },
+  }
 };
 
 const actions = {
@@ -50,11 +59,11 @@ const actions = {
   },
   hideTab({ commit }, id) {
     commit("setVisible", { id: id, isTabVisible: false });
-  },
+  }
 };
 
 const mutations = {
-  setActive(state, { id }) {
+  setActive(state, id) {
     state.pages.forEach(function(page) {
       if (page.id != id) {
         page.isActive = false;
@@ -71,7 +80,7 @@ const mutations = {
       return page.id == id;
     });
     page.isTabVisible = isTabVisible;
-  },
+  }
 };
 
 export default {
@@ -79,5 +88,5 @@ export default {
   state,
   getters,
   actions,
-  mutations,
+  mutations
 };
