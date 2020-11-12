@@ -1,4 +1,5 @@
 import userService from "../../api/userService";
+import store from "../";
 const state = () => ({
   user: {
     firstName: null,
@@ -23,7 +24,8 @@ const actions = {
       //todo call api with email and password
       userService.login(credentials).then(
         (response) => {
-          commit("setUser", { user: response });
+          commit("setUser", { user: response.user });
+          store.dispatch("cookie/setTokenCookie", response.token);
           resolve();
         },
         function(response) {
@@ -36,7 +38,10 @@ const actions = {
     return new Promise((resolve, reject) => {
       userService.getUserFromToken({ token }).then(
         (user) => {
-          commit("setUser", { user: user });
+          if (user) {
+            commit("setUser", { user: user });
+          }
+
           resolve();
         },
         function(response) {

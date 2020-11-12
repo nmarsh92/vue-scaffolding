@@ -1,11 +1,13 @@
 const users = [
   {
+    id: "1",
     firstName: "Ted",
     lastName: "Moesby",
     email: "ted@mosbiusdesigns.com",
     password: "123"
   },
   {
+    id: "2",
     firstName: "Barney",
     lastName: "Stinson",
     email: "barney@goliathnationalbank.com",
@@ -23,7 +25,7 @@ export default {
         });
 
         if (user && user.password == password) {
-          resolve(user);
+          resolve({ user: user, token: user.id });
         }
 
         reject("Incorrect username or password.");
@@ -35,7 +37,11 @@ export default {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (token) {
-          return resolve(users[0]);
+          return resolve(
+            users.find((x) => {
+              return x.id == token;
+            })
+          );
         } else {
           reject();
         }

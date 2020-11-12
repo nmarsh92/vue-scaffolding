@@ -26,9 +26,11 @@ function navigate(to, from, next, isAuth) {
 }
 
 router.beforeEach((to, from, next) => {
+  store.dispatch("cookie/setToken");
   let isAuth = store.getters["authentication/isAuthenticated"];
+  let token = store.getters["cookie/token"];
   if (!isAuth) {
-    store.dispatch("authentication/setUserFromToken", "fakeToken").then(
+    store.dispatch("authentication/setUserFromToken", token).then(
       () => {
         isAuth = store.getters["authentication/isAuthenticated"];
         navigate(to, from, next, isAuth);
@@ -38,6 +40,8 @@ router.beforeEach((to, from, next) => {
         navigate(to, from, next, isAuth);
       }
     );
+  } else {
+    navigate(to, from, next, isAuth);
   }
 });
 

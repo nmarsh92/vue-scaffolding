@@ -66,7 +66,7 @@ export default {
         vm.$store.dispatch("authentication/login", this.credentials).then(
           function() {
             if (vm.$route.query.redirect) {
-              vm.$router.push(vm.$route.query.redirect);
+              vm.$router.push({ path: vm.$route.query.redirect });
             } else {
               vm.$router.push("/");
             }
