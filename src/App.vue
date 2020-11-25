@@ -18,8 +18,8 @@ import ViewNavBar from "@/components/ViewNavBar.vue";
 export default {
   name: "App",
   components: {
-    ViewNavBar
-  }
+    ViewNavBar,
+  },
 };
 </script>
 

@@ -5,7 +5,7 @@ const state = () => ({
       title: "Home",
       Name: "Home",
       to: "/",
-      active: true,
+      isActive: true,
       right: false,
       isTabVisible: true
     },
@@ -14,7 +14,7 @@ const state = () => ({
       title: "Profile",
       Name: "Profile",
       to: "/profile",
-      active: true,
+      isActive: false,
       right: false,
       isTabVisible: true
     },
@@ -22,7 +22,7 @@ const state = () => ({
       id: "logout",
       title: "Logout",
       to: "logout",
-      active: false,
+      isActive: false,
       right: true,
       isTabVisible: false
     },
@@ -30,7 +30,7 @@ const state = () => ({
       id: "login",
       title: "Login",
       to: "login",
-      active: false,
+      isActive: false,
       right: false,
       isTabVisible: false
     }
