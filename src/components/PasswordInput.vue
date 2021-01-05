@@ -19,22 +19,22 @@
 </template>
 <script>
 export default {
-  name: "PasswordInput",
-  props: ["minLength", "autocomplete", "submitted"],
-  data: function() {
+  name: 'PasswordInput',
+  props: ['minLength', 'autocomplete', 'submitted'],
+  data: function () {
     return {
-      password: "",
+      password: '',
       check: false
     };
   },
   computed: {
-    state: function() {
+    state: function () {
       if (!this.check && !this.submitted) return null;
       return this.password.length >= this.minLength;
     }
   },
   methods: {
-    onBlur: function() {
+    onBlur: function () {
       this.check = true;
     }
   }

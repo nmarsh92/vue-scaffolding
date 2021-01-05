@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import PasswordInput from "./PasswordInput";
-import EmailInput from "./EmailInput";
+import PasswordInput from './PasswordInput';
+import EmailInput from './EmailInput';
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   components: {
     PasswordInput,
     EmailInput
@@ -43,10 +43,10 @@ export default {
         submitted: false
       },
       credentials: {
-        email: "",
-        password: ""
+        email: '',
+        password: ''
       },
-      errorMessage: ""
+      errorMessage: ''
     };
   },
   computed: {
@@ -63,12 +63,12 @@ export default {
       var vm = this;
       vm.validation.submitted = true;
       if (vm.isValid) {
-        vm.$store.dispatch("authentication/login", this.credentials).then(
+        vm.$store.dispatch('authentication/login', this.credentials).then(
           function() {
             if (vm.$route.query.redirect) {
               vm.$router.push({ path: vm.$route.query.redirect });
             } else {
-              vm.$router.push("/");
+              vm.$router.push('/');
             }
           },
           function(err) {
@@ -81,5 +81,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

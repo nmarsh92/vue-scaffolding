@@ -1,5 +1,5 @@
-import userService from "../../api/userService";
-import store from "../";
+import userService from '../../api/userService';
+import store from '../';
 const state = () => ({
   user: {
     firstName: null,
@@ -10,10 +10,10 @@ const state = () => ({
 });
 
 const getters = {
-  getUser: (state) => {
+  getUser: state => {
     return state.user;
   },
-  isAuthenticated: (state) => {
+  isAuthenticated: state => {
     return state.user && state.user.isAuthenticated;
   }
 };
@@ -23,9 +23,9 @@ const actions = {
     return new Promise((resolve, reject) => {
       //todo call api with email and password
       userService.login(credentials).then(
-        (response) => {
-          commit("setUser", { user: response.user });
-          store.dispatch("cookie/setTokenCookie", response.token);
+        response => {
+          commit('setUser', { user: response.user });
+          store.dispatch('cookie/setTokenCookie', response.token);
           resolve();
         },
         function(response) {
@@ -37,9 +37,9 @@ const actions = {
   setUserFromToken({ commit }, token) {
     return new Promise((resolve, reject) => {
       userService.getUserFromToken({ token }).then(
-        (user) => {
+        user => {
           if (user) {
-            commit("setUser", { user: user });
+            commit('setUser', { user: user });
           }
 
           resolve();

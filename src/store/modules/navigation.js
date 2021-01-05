@@ -1,35 +1,35 @@
 const state = () => ({
   pages: [
     {
-      id: "home",
-      title: "Home",
-      Name: "Home",
-      to: "/",
+      id: 'home',
+      title: 'Home',
+      Name: 'Home',
+      to: '/',
       isActive: true,
       right: false,
       isTabVisible: true
     },
     {
-      id: "profile",
-      title: "Profile",
-      Name: "Profile",
-      to: "/profile",
+      id: 'profile',
+      title: 'Profile',
+      Name: 'Profile',
+      to: '/profile',
       isActive: false,
       right: false,
       isTabVisible: true
     },
     {
-      id: "logout",
-      title: "Logout",
-      to: "logout",
+      id: 'logout',
+      title: 'Logout',
+      to: 'logout',
       isActive: false,
       right: true,
       isTabVisible: false
     },
     {
-      id: "login",
-      title: "Login",
-      to: "login",
+      id: 'login',
+      title: 'Login',
+      to: 'login',
       isActive: false,
       right: false,
       isTabVisible: false
@@ -38,12 +38,12 @@ const state = () => ({
 });
 
 const getters = {
-  leftTabs: (state) => {
+  leftTabs: state => {
     return state.pages.filter(function(page) {
       return !page.right && page.isTabVisible;
     });
   },
-  rightTabs: (state) => {
+  rightTabs: state => {
     return state.pages.filter(function(page) {
       return page.right && page.isTabVisible;
     });
@@ -52,13 +52,13 @@ const getters = {
 
 const actions = {
   selectPage({ commit }, id) {
-    commit("setActive", id);
+    commit('setActive', id);
   },
   showTab({ commit }, id) {
-    commit("setVisible", { id: id, isTabVisible: true });
+    commit('setVisible', { id: id, isTabVisible: true });
   },
   hideTab({ commit }, id) {
-    commit("setVisible", { id: id, isTabVisible: false });
+    commit('setVisible', { id: id, isTabVisible: false });
   }
 };
 

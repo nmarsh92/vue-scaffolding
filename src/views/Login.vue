@@ -9,14 +9,13 @@
 </template>
 
 <script>
-import LoginForm from "@/components/LoginForm.vue";
+import LoginForm from '@/components/LoginForm.vue';
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
     LoginForm
   }
 };
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

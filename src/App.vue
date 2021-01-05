@@ -13,13 +13,13 @@
   </div>
 </template>
 <script>
-import ViewNavBar from "@/components/ViewNavBar.vue";
+import ViewNavBar from '@/components/ViewNavBar.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    ViewNavBar,
-  },
+    ViewNavBar
+  }
 };
 </script>
 

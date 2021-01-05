@@ -1,11 +1,11 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import store from "../store";
-import routes from "./routes";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import store from '../store';
+import routes from './routes';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
 });
@@ -13,12 +13,12 @@ const router = new VueRouter({
 function navigate(to, from, next, isAuth) {
   if (to.meta.protected && !isAuth) {
     next({
-      path: "/login",
+      path: '/login',
       query: { redirect: to.fullPath }
     });
   } else {
     if (isAuth) {
-      store.dispatch("navigation/showTab", "logout");
+      store.dispatch('navigation/showTab', 'logout');
     }
 
     next();
@@ -26,13 +26,13 @@ function navigate(to, from, next, isAuth) {
 }
 
 router.beforeEach((to, from, next) => {
-  store.dispatch("cookie/setToken");
-  let isAuth = store.getters["authentication/isAuthenticated"];
-  let token = store.getters["cookie/token"];
+  store.dispatch('cookie/setToken');
+  let isAuth = store.getters['authentication/isAuthenticated'];
+  let token = store.getters['cookie/token'];
   if (!isAuth) {
-    store.dispatch("authentication/setUserFromToken", token).then(
+    store.dispatch('authentication/setUserFromToken', token).then(
       () => {
-        isAuth = store.getters["authentication/isAuthenticated"];
+        isAuth = store.getters['authentication/isAuthenticated'];
         navigate(to, from, next, isAuth);
       },
       () => {

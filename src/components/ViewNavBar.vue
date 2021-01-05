@@ -29,22 +29,22 @@
 
 <script>
 export default {
-  name: 'ViewNavBar',
+  name: "ViewNavBar",
   props: {},
   computed: {
     leftTabs: function () {
-      return this.$store.getters['navigation/leftTabs']
+      return this.$store.getters["navigation/leftTabs"];
     },
     rightTabs: function () {
-      return this.$store.getters['navigation/rightTabs']
+      return this.$store.getters["navigation/rightTabs"];
     }
   },
   methods: {
     selectTab: function (selectedTab) {
-      this.$store.dispatch('navigation/selectPage', selectedTab.id)
+      this.$store.dispatch("navigation/selectPage", selectedTab.id);
     }
   }
-}
+};
 </script>
 
 <style scoped lang="less">

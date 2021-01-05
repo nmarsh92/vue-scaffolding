@@ -1,30 +1,30 @@
-import Vue from "vue";
+import Vue from 'vue';
 const state = () => ({
   token: -1
 });
 
 const getters = {
-  token: (state) => {
+  token: state => {
     return state.token;
   }
 };
 
 const actions = {
   setTokenCookie({ commit }, token) {
-    commit("setTokenCookie", token);
-    commit("setToken");
+    commit('setTokenCookie', token);
+    commit('setToken');
   },
   setToken({ commit }) {
-    commit("setToken");
+    commit('setToken');
   }
 };
 
 const mutations = {
   setTokenCookie(state, token) {
-    Vue.$cookies.set("token", token);
+    Vue.$cookies.set('token', token);
   },
   setToken(state) {
-    state.token = Vue.$cookies.get("token");
+    state.token = Vue.$cookies.get('token');
   }
 };
 

@@ -17,23 +17,23 @@
 
 <script>
 export default {
-  name: "EmailInput",
-  props: ["id", "autocomplete", "submitted"],
-  data: function() {
+  name: 'EmailInput',
+  props: ['id', 'autocomplete', 'submitted'],
+  data: function () {
     return {
-      email: "",
+      email: '',
       check: false,
       regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     };
   },
   computed: {
-    state: function() {
+    state: function () {
       if (!this.check && !this.submitted) return null;
       return this.regex.test(this.email);
     }
   },
   methods: {
-    onBlur: function() {
+    onBlur: function () {
       this.check = true;
     }
   }
